@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}  % 输入字符集为UTF-8
+\usepackage{ctex}  % 支持中文
+\usepackage{amsmath}  % 支持数学符号
+
+\begin{document}
+
+\title{三层玻璃与单层玻璃保暖效果比较}
+\author{林凯}
+\date{}
+\maketitle
+
+\section{基本概念}
+
+热传导是指热量通过材料的导热性从高温区域传递到低温区域。热阻可以用来衡量材料对热传导的抵抗能力，通常由材料的厚度和导热系数决定。
+
+\section{模型假设}
+
+\begin{itemize}
+    \item 假设单层玻璃和三层玻璃的导热系数相同，且厚度相同。
+    \item 三层玻璃中，每层玻璃之间有一定的空气层，空气的导热系数较低。
+    \item 忽略其他热损失（如对流、辐射）。
+\end{itemize}
+
+\section{热阻计算}
+
+\subsection{单层玻璃的热阻}
+
+单层玻璃的热阻 \( R_1 \) 可表示为：
+\[
+R_1 = \frac{d}{k}
+\]
+其中，\( d \) 为单层玻璃的厚度，\( k \) 为玻璃的导热系数。
+
+\subsection{三层玻璃的热阻}
+
+三层玻璃的总热阻 \( R_3 \) 可以表示为：
+\[
+R_3 = 3 \cdot \frac{d}{k} + 2 \cdot \frac{d_a}{k_a}
+\]
+其中，\( d_a \) 为空气层的厚度，\( k_a \) 为空气的导热系数。
+
+\section{总热阻比较}
+
+通过比较 \( R_1 \) 和 \( R_3 \)，可以得出：
+\[
+R_3 > R_1
+\]
+这意味着三层玻璃的保暖效果优于单层玻璃。
+
+\section{结论}
+
+三层玻璃由于其更高的热阻，能够更有效地减少室内热量流失，因此在保暖效果上优于单层玻璃。空气层的存在显著提升了整体保温性能，尤其在寒冷环境中。
+
+\end{document}

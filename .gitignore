@@ -1,0 +1,13 @@
+env/
+gitclone/
+**/.vscode/
+**/.exe/
+**/*.code-workspace
+
+**/.clangd
+**/.clang-format
+**/.clang-tidy
+# 编译生成的文件
+*.o
+*.a
+*.class

@@ -1,0 +1,14 @@
+<div class="home-container">
+  <div class="blur-overlay"></div>
+  <div class="content">
+    <span>课堂参与度智能监测系统</span>
+    <div class="inputbox">
+      <label for="inputField">请输入应到人数:</label>
+      <input id="inputField" type="number" [(ngModel)]="attendanceCount" placeholder="0">
+    </div>
+    <div class="btnbox">
+      <input type="file" (change)="onFileSelected($event)" multiple accept=".jpg,.png">
+      <button (click)="uploadData()">上传分析</button>
+    </div>
+  </div>
+</div>

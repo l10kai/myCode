@@ -1,0 +1,145 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{ctex} % 使用 ctex 包来处理中文
+\usepackage{amsmath} % 数学模式
+
+\title{24算法暑期基础培训第二讲}
+\author{l10k}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{常用排序}
+
+\begin{frame}{基础篇}
+    \begin{block}{冒泡排序}
+        \begin{itemize}
+            \item 算法描述：重复地走访过要排序的数列，一次比较两个元素，如果它们的顺序错误就把它们交换过来。
+            \item 时间复杂度：$O(n^2)$
+            \item 空间复杂度：$O(1)$
+            \item 稳定性：稳定
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{直接插入排序}
+        \begin{itemize}
+            \item 算法描述：从未排序区间中取出第一个元素，插入到已排序区间中的适当位置，直到所有元素均已排序。
+            \item 时间复杂度：$O(n^2)$
+            \item 空间复杂度：$O(1)$
+            \item 稳定性：稳定
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{基础篇}
+    \begin{block}{希尔排序}
+        \begin{itemize}
+            \item 算法描述：先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中记录基本有序时，再对全体记录进行一次直接插入排序。
+            \item 时间复杂度：最坏情况 $O(n^2)$，最优情况 $O(n \log^2 n)$
+            \item 空间复杂度：$O(1)$
+            \item 稳定性：不稳定
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{选择排序}
+        \begin{itemize}
+            \item 算法描述：每次从待排序的数据元素中选出最小（或最大）的一个元素，存放在序列的起始位置，直到全部待排序的数据元素排完。
+            \item 时间复杂度：$O(n^2)$
+            \item 空间复杂度：$O(1)$
+            \item 稳定性：不稳定
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{进阶篇}
+    \begin{block}{快速排序}
+        \begin{itemize}
+            \item 算法描述：通过一趟排序将待排记录分隔成独立的两部分，其中一部分的所有记录均比另一部分的所有记录小，然后分别对这两部分继续进行排序，直到整个序列有序。
+            \item 时间复杂度：最坏情况 $O(n^2)$，平均 $O(n \log n)$
+            \item 空间复杂度：$O(\log n)$
+            \item 稳定性：不稳定
+        \end{itemize}
+    \end{block}
+
+    \begin{block}{归并排序}
+        \begin{itemize}
+            \item 算法描述：将序列分为若干子序列，每个子序列排好序后再将其合并成一个整体序列。
+            \item 时间复杂度：$O(n \log n)$
+            \item 空间复杂度：$O(n)$
+            \item 稳定性：稳定
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\section{堆}
+
+\begin{frame}{堆的基本操作}
+    \begin{itemize}
+        \item 插入一个数
+        \item 求集合当中的最小值或最大值
+        \item 删除最小值或最大值
+        \item 删除任意一个元素
+        \item 修改任意一个元素
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{堆的实现}
+    \begin{itemize}
+        \item 最小堆：每个节点都小于等于其子节点。
+        \item 最大堆：每个节点都大于等于其子节点。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{堆的应用}
+    \begin{itemize}
+        \item 优先队列：实现优先队列常用堆结构。
+    \end{itemize}
+\end{frame}
+
+\section{优先队列}
+
+\begin{frame}{基本操作}
+    \begin{itemize}
+        \item top：访问队头元素
+        \item empty：队列是否为空
+        \item size：返回队列内元素个数
+        \item push：插入元素到队尾（并排序）
+        \item emplace：原地构造一个元素并插入队列
+        \item pop：弹出队头元素
+        \item swap：交换内容
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{优先队列的实现}
+    \begin{itemize}
+        \item 基于堆的实现：优先队列通常使用二叉堆来实现。
+    \end{itemize}
+\end{frame}
+
+\section{二分查找}
+
+\begin{frame}{手写二分查找}
+    \begin{itemize}
+        \item 算法描述：在一个有序数组中，通过不断地将查找范围减半来定位目标值。
+        \item 时间复杂度：$O(\log n)$
+        \item 空间复杂度：$O(1)$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{二分答案}
+    \begin{itemize}
+        \item 应用场景：通常用于解决在一个连续的数值区间内查找满足某个条件的最优值的问题。
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{STL中的二分查找}
+    \begin{itemize}
+        \item lower\_bound()：返回大于或等于目标值的第一个位置
+        \item upper\_bound()：返回大于目标值的第一个位置
+        \item binary\_search()：若目标值存在则返回true，否则返回false
+    \end{itemize}
+\end{frame}
+
+\end{document}

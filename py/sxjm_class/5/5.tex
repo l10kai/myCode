@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}  % 输入字符集为UTF-8
+\usepackage{ctex}  % 支持中文
+\usepackage{amsmath}  % 支持数学符号
+\begin{document}
+
+\title{圆台型易拉罐的剩余物料计算}
+\author{林凯}
+\date{}
+\maketitle
+
+\section{几何参数定义}
+
+首先，定义圆台的参数：
+\begin{itemize}
+    \item \( r_1 \): 下底半径
+    \item \( r_2 \): 上底半径
+    \item \( h \): 圆台的高度
+\end{itemize}
+
+\section{圆台体积计算}
+
+圆台的体积 \( V \) 可以通过以下公式计算：
+\[
+V = \frac{1}{3} \pi h (r_1^2 + r_1 r_2 + r_2^2)
+\]
+
+\section{材料总用量}
+
+确定制作一个完整的易拉罐所需的材料体积。假设易拉罐的侧面和底部使用相同的材料，计算出所需材料的体积。
+
+\section{剩余物料计算}
+
+剩余物料可通过以下步骤求解：
+
+\subsection{1. 确定原材料的总量}
+
+计算出所使用的材料的初始体积 \( V_{\text{initial}} \)。
+
+\subsection{2. 减去使用的材料体积}
+
+从初始材料中减去制造易拉罐所需的体积 \( V \)。
+
+\subsection{3. 得出剩余物料}
+
+\[
+\text{剩余物料} = V_{\text{initial}} - V
+\]
+
+\section{示例}
+
+假设：
+\begin{itemize}
+    \item 下底半径 \( r_1 = 3 \) cm
+    \item 上底半径 \( r_2 = 2 \) cm
+    \item 高度 \( h = 10 \) cm
+\end{itemize}
+
+1. 计算圆台体积：
+\[
+V = \frac{1}{3} \pi (10) (3^2 + 3 \times 2 + 2^2) = \frac{1}{3} \pi (10) (9 + 6 + 4) = \frac{1}{3} \pi (10) (19) = \frac{190}{3} \pi \, \text{cm}^3
+\]
+
+2. 计算剩余物料，假设初始材料体积为 \( V_{\text{initial}} \)。
+
+最后，通过上述步骤可以得到剩余物料的量。
+
+\end{document}

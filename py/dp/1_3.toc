@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{什么是dp?}{2}{0}{1}
+\beamer@sectionintoc {2}{动态规划基本概念}{3}{0}{2}
+\beamer@sectionintoc {3}{常见dp问题}{7}{0}{3}
+\beamer@sectionintoc {4}{线性dp基础}{18}{0}{4}
+\beamer@sectionintoc {5}{背包问题}{28}{0}{5}

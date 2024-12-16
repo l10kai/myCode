@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{ctex}
+\geometry{a4paper,scale=0.8}
+
+\title{基于泊松分布的次品率计算}
+\author{企业生产过程中的次品率决策}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{问题描述}
+
+我们需要根据泊松分布重新计算表 1 和表 2 中的次品率。已知零配件、半成品和成品的次品率为某一初始值，通过抽样检测来估计实际次品率。
+
+\section{泊松分布模型}
+
+泊松分布的概率质量函数为：
+
+\[
+    P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}
+\]
+
+其中，\( \lambda = n \times p \)，\( n \) 为抽样样本量，\( p \) 为假设的次品率。我们通过泊松分布生成的次品数量 \( k \) 来计算新的次品率：
+
+\[
+    \text{新的次品率} = \frac{k}{n}
+\]
+
+\section{表 1 和表 2 的次品率计算}
+
+对于表 1 和表 2 中的各个零配件、半成品和成品，次品率通过以下方式计算：
+
+1. 设定初始次品率 \( p_0 \)，样本量 \( n \)。
+2. 根据泊松分布生成次品数量 \( k \)。
+3. 计算新的次品率 \( p_{\text{new}} = \frac{k}{n} \)。
+
+表 1 和表 2 中的各项次品率根据上述公式重新计算，结果如下。
+
+\section{总结}
+
+通过使用泊松分布，能够较为精确地估计生产过程中各环节的次品率。这为企业制定最优决策提供了依据。
+
+\end{document}

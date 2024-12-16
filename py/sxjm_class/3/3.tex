@@ -1,0 +1,84 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}  % 输入字符集为UTF-8
+\usepackage{ctex}  % 支持中文
+\usepackage{amsmath}  % 支持数学符号
+
+\begin{document}
+
+\title{作业20241011}
+\author{}
+\date{}
+\maketitle
+
+\section{模型定义}
+
+在存货管理中，我们使用经济订货量（EOQ）模型来确定最优订货批量和订货周期。
+
+\subsection{1.1 不允许缺货模型}
+
+假设：
+\begin{itemize}
+    \item \( D \): 年需求量
+    \item \( S \): 每次订货成本
+    \item \( H \): 每单位存货的年持有成本
+    \item \( C \): 每单位商品的采购成本
+\end{itemize}
+
+总费用公式为：
+\[
+TC = \frac{D}{Q} S + \frac{Q}{2} H + DC
+\]
+其中：
+\begin{itemize}
+    \item 第一项为订货成本
+    \item 第二项为持有成本
+    \item 第三项为商品采购成本
+\end{itemize}
+
+\subsection{1.2 允许缺货模型}
+
+在允许缺货的情况下，假设缺货成本为 \( C_{short} \)，总费用公式变为：
+\[
+TC = \frac{D}{Q} S + \frac{Q}{2} H + DC + C_{short}
+\]
+
+\section{确定最优订货批量 \( Q^* \)}
+
+\subsection{不允许缺货模型}
+
+对总费用函数 \( TC \) 关于 \( Q \) 求导并设为零：
+\[
+\frac{d(TC)}{dQ} = -\frac{D}{Q^2} S + \frac{H}{2} = 0
+\]
+得到：
+\[
+Q^* = \sqrt{\frac{2DS}{H}}
+\]
+
+\subsection{允许缺货模型}
+
+同样的方法，对允许缺货模型的总费用 \( TC \) 求导：
+\[
+\frac{d(TC)}{dQ} = -\frac{D}{Q^2} S + \frac{H}{2} = 0
+\]
+得到的最优订货批量为：
+\[
+Q^* = \sqrt{\frac{2DS}{H}}
+\]
+
+\section{确定最优订货周期 \( T^* \)}
+
+最优订货周期 \( T^* \) 与最优订货批量相关：
+\[
+T^* = \frac{Q^*}{D}
+\]
+
+\section{结果比较}
+
+在不允许缺货模型和允许缺货模型中，经过推导得到相同的最优订货批量 \( Q^* \) 和最优订货周期 \( T^* \)。这证明了在两种模型中，尽管采购成本和缺货成本的存在，最优的订货策略并没有改变。
+
+\section{结论}
+
+无论是在不允许缺货的情况下还是在允许缺货的情况下，增加采购货物本身的费用后，得出的最优订货批量和订货周期均保持一致。这表明，即使在不同的约束条件下，经济订货量模型依然能提供有效的决策支持。
+
+\end{document}

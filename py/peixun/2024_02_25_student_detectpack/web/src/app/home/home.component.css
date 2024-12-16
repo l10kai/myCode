@@ -1,0 +1,101 @@
+.home-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url('/assets/1.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.blur-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80vw;
+  height: 80vh;
+  background-color: rgba(255,255,255,0.95);
+  border-radius: 30px;
+}
+
+span {
+  font-size: 4em; /* 设置字体大小 */
+  font-weight: bold; /* 字体加粗 */
+  color: #75b0f3; /* 设定一个鲜艳的字体颜色 */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8),  /* 主阴影 */
+  0px 0px 25px rgba(255, 255, 255, 0.5); /* 轻微的光晕效果增加立体感 */
+  padding: 10px 20px; /* 文字周围留出空间 */
+  position: fixed;
+  top: 30vh;
+  border-radius: 5px; /* 边角圆滑 */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* 盒子阴影增加立体感 */
+  display: inline-block; /* 保证 padding 和其他盒模型属性有效 */
+}
+
+
+.home-container label {
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 15px;
+  justify-content: center;
+}
+
+.home-container input {
+  width: 5vw; /* 输入框宽度 */
+  max-width: 300px; /* 最大宽度 */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height:15px;
+}
+
+.home-container button {
+  width: 40%;
+  max-width: 300px;
+  padding: 10px;
+  color: white;
+  background-color: #75b0f3;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.home-container button:hover {
+  background-color: #0056b3;
+}
+.inputbox{
+  margin-top: 30px;
+  display: flex;
+  width: 20vw;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.btnbox{
+  width: 20vw;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+.btnbox input{
+  width: 100%;
+  margin-bottom: 20px;
+}
