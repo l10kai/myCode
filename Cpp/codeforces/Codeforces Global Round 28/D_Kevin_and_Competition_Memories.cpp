@@ -6,6 +6,7 @@
 |  `----.|  | |  |\   | |  .  \
 |_______||__| |__| \__| |__|\__\
 */
+#include <algorithm>
 #include <bits/stdc++.h>
 #define mem(a, b) memset(a, b, sizeof(a))
 #define all(x)    x.begin(), x.end()
@@ -34,49 +35,31 @@ using u64 = uint64_t;
 const char &ln = '\n';
 
 void solve() {
-    i64 n, x, k;
-    cin >> n >> x >> k;
-    deque<i64> left, right;
+    int n, m;
+    cin >> n >> m;
 
-    for (int i = 1; i < (n + 1) / 2; i++) {
-        left.pb(i);
-    }
-    for (int i = (n + 1) / 2 + 1; i <= n; i++) {
-        right.pb(i);
-    }
-    i64 mid = (n + 1) / 2;
+    vector<int> a(n), b(n), v(n);
 
-    for (auto i : left) {
-        cout << i << " ";
-    }
-    cout << mid << " ";
-    for (auto i : right) {
-        cout << i << " ";
+    for (auto &x : a)
+        cin >> x;
+    
+    i64 my_ranting = a[0];
+
+    for (auto &x : b)
+        cin >> x;
+    
+    sort(rall(a));
+    sort(all(b));
+
+    while(a.back() <= my_ranting)
+        a.ppb();
+
+    sort(all(a));
+
+    for(int i = 0; i < n; i ++) {
+        v[i] = upper_bound(all(a), b[i]) - a.begin();
     }
 
-    cout << ln;
-
-    while (k--) {
-        if (x == 0) {
-            left.push_front(mid);
-            mid = left.back();
-            left.ppb();
-        } else {
-            right.push_back(mid);
-            mid = right.front();
-            right.pop_front();
-        }
-        x = 1 - x;
-
-        for (auto i : left) {
-            cout << i << " ";
-        }
-        cout << mid << " ";
-        for (auto i : right) {
-            cout << i << " ";
-        }
-        cout << ln;
-    }
 }
 
 signed main() {
