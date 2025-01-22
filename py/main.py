@@ -1,13 +1,33 @@
-import random
+from datetime import date, timedelta
 
-n = random.randint(1, 50)
-edges = []
 
-for i in range(1, n):
-    j = random.randint(0, i - 1)
-    edges.append((i, j))
+def is_prime(n):
+    if n < 2:
+        return False
+    if n % 2 == 0 and n != 2:
+        return False
+    r = int(n**0.5)
+    for i in range(3, r + 1, 2):
+        if n % i == 0:
+            return False
+    return True
 
-with open("./data.txt", "w") as f:
-    f.write(f"{n}\n")
-    for v, w in edges:
-        f.write(f"{v} {w}\n")
+
+start = date(2005, 1, 1)
+end = date(2005, 12, 30)
+delta = timedelta(days=1)
+
+total_days = 0
+prime_days = 0
+
+current = start
+while current <= end:
+    date_int = int(current.strftime("%Y%m%d"))
+    total_days += 1
+    if is_prime(date_int):
+        prime_days += 1
+        print(current)
+    current += delta
+
+probability = prime_days / total_days
+print(f"近100年生日为质数的概率: {probability:.8f}")

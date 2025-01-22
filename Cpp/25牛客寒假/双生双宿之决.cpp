@@ -34,62 +34,22 @@ using u64 = uint64_t;
 const char &ln = '\n';
 
 void solve() {
-    int n, k;
-    cin >> n >> k;
+    int n;
+    cin >> n;
 
-    vector<pll> a(n);
+    map<int, int> mp;
 
-    vector<i64> ans;
-    for (auto &[l, _] : a) {
-        cin >> l;
-        ans.pb(l);
-    }
-    for (auto &[_, r] : a) {
-        cin >> r;
-        ans.pb(r);
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        mp[x]++;
     }
 
-    if (k == 0) {
-        i64 minn = 0, tmp = 0;
-        sort(all(a), [](const pll &x, const pll &y) {
-            return x.fi <= y.fi;
-        });
-
-        for (int i = 0; i < n; i++) {
-            if (tmp < a[i].fi)
-                minn = max(minn, a[i].fi * (n - i));
-
-            tmp = max(tmp, a[i].se);
-        }
-
-        cout << minn << ln;
+    if(mp.size() != 2 || mp.begin()->se != mp.rbegin()->se) {
+        cout << "No" << ln;
         return;
     }
-
-    sort(all(a), [](const pll &x, const pll &y) {
-        return x.se >= y.se;
-    });
-
-
-    i64 ans_2 = 0;
-
-    i64 l = a[n - k].fi;
-    for (int i = n - 1; i >= n - k; i--) {
-        i64 tmp = 0;
-        l = a[i].fi;
-        for (int i = 0; i < n; i++) {
-        if (l <= a[i].fi) {
-            tmp += l;
-        } else if (l <= a[i].se) {
-            tmp += l;
-        }
-    }
-
-    ans_2 = max(ans_2, tmp);
-    }
-
-    
-    cout << max(ans, ans_2) << ln;
+    cout << "Yes" << ln;
 }
 
 signed main() {

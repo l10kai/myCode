@@ -1,0 +1,230 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\usetheme{Antibes}
+\usefonttheme{serif}
+
+
+
+\title{栈、队列、堆(优先队列)、贪心思想}
+\author{ncst acm集训队\\ 林凯}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{栈}
+\frame{\sectionpage}
+\subsection{栈的定义}
+\begin{frame}
+\frametitle{栈的定义}
+栈是一种只允许在一端进行插入、删除的线性表。
+
+\begin{quote}
+栈底是固定的,不允许插入和删除的一端。栈顶是能够进行插入和删除的一端。
+所以栈是先进后出的线性表。
+\end{quote}
+
+
+\end{frame}
+
+\subsection{栈的操作}
+\begin{frame}
+\frametitle{栈的操作}
+
+\begin{itemize}
+    \item StackInit:初始化栈
+    \item StackPush:入栈
+    \item StackPop:出栈
+    \item StackTop:获取栈顶元素
+    \item StackEmpty:检测栈是否为空
+    \item StackDestroy:销毁栈
+\end{itemize}
+\end{frame}
+\subsection{栈的实现}
+\begin{frame}
+\frametitle{栈的实现(数组模拟)}
+\begin{itemize}
+    \item 用 top 表示栈顶所在的索引。初始时,$$top = -1$$
+    \item push x:$$st[++top] = x$$
+    \item pop:$$top--$$
+    \item empty:$$top == -1 ? "YES" : "NO"$$
+    \item query:$$st[top]$$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{栈的实现(STL)}
+\begin{itemize}
+    \item empty() 堆栈为空则返回真
+    \item pop() 移除栈顶元素
+    \item push() 在栈顶增加元素
+    \item size() 返回栈中元素数目
+    \item top() 返回栈顶元素
+\end{itemize}
+\end{frame}
+
+\section{队列}
+\frame{\sectionpage}
+\subsection{队列的定义}
+\begin{frame}
+
+\frametitle{队列的定义}
+队列是一种一端进行插入,另一端进行删除的线性表。
+
+\begin{quote}
+队头是进行删除操作的一端。队尾是进行插入操作的一端。
+所以队列是先进先出的线性表。
+\end{quote}
+
+
+\end{frame}
+\subsection{队列的操作}
+\begin{frame}
+
+\frametitle{队列的操作}
+
+\begin{itemize}
+    \item QueueInit:初始化队列
+    \item QueuePush:队尾入队列
+    \item QueuePop:队头出队列
+    \item QueueFront:获取队列头部元素
+    \item QueueBack:获取队列队尾元素
+    \item QueueEmpty:检测队列是否为空
+    \item QueueDestroy:销毁队列
+\end{itemize}
+\end{frame}
+
+\subsection{队列的实现}
+\begin{frame}
+\frametitle{队列的实现(数组模拟)}
+\begin{itemize}
+    \item 用一个数组 q 保存数据
+    \item 用 $hh$ 代表队头,$tt$ 代表队尾
+    \item pop:$hh++$
+    \item push:先 $tt++$ 后放入元素
+    \item empty:$tt \ge hh$ 时非空
+    \item query:返回 $q[hh]$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{队列的实现(STL)}
+\begin{itemize}
+    \item empty:检测队列是否为空
+    \item size:返回队列中有效元素的个数
+    \item front:返回队头元素
+    \item back:返回队尾元素
+    \item push\_back:在队列尾部入队列
+    \item pop\_front:在队列头部出队列
+\end{itemize}
+\end{frame}
+
+\section{堆(优先队列)}
+\frame{\sectionpage}
+\subsection{堆的定义}
+\begin{frame}
+\frametitle{堆的定义}
+堆是一种树形结构,根是堆顶,堆顶是所有元素的最优值。堆有大根堆和小根堆,一般用二叉树实现。
+\end{frame}
+
+\subsection{堆的操作}
+\begin{frame}
+\frametitle{堆的操作}
+\begin{itemize}
+    \item empty:返回堆是否为空
+    \item top:返回根节点值
+    \item push:插入元素
+    \item pop:移除根节点并调整堆
+\end{itemize}
+\end{frame}
+
+\subsection{堆的实现}
+\begin{frame}
+\frametitle{堆的实现(数组模拟)}
+\begin{itemize}
+    \item heap\_swap:交换两个元素
+    \item heap\_down:向下调整
+    \item heap\_up:向上调整
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{堆的实现(STL - 优先队列)}
+\begin{itemize}
+    \item empty:检测堆是否为空
+    \item size:返回堆中元素个数
+    \item top:返回堆顶元素
+    \item push:插入元素
+    \item pop:删除堆顶元素
+\end{itemize}
+\end{frame}
+
+\section{堆排序}
+\begin{frame}
+\frametitle{堆排序(Heap Sort)}
+\begin{enumerate}
+    \item 构建最大堆
+    \item 交换堆顶与最后一个元素
+    \item 调整堆
+    \item 重复上述步骤
+\end{enumerate}
+\end{frame}
+
+\section{贪心思想}
+\frame{\sectionpage}
+\subsection{贪心思想的定义}
+\begin{frame}
+\frametitle{贪心思想的定义}
+贪心算法指在每一步都采取最优的选择,不一定得到最优结果,但通常接近最优解。
+\end{frame}
+
+\subsection{贪心思想的性质}
+\begin{frame}
+\frametitle{贪心思想的性质}
+\begin{itemize}
+    \item 最优子结构
+    \item 贪心选择性质
+\end{itemize}
+\end{frame}
+
+\subsection{贪心思想的应用}
+\begin{frame}
+
+    \frametitle{例题:Luogu P1223}
+    \textbf{题意:}n个人排队接水,每个人接水的时间为 t[i],求最短的平均等待时间。  
+
+\end{frame}
+
+\begin{frame}
+\frametitle{例题:Luogu P1223}
+\textbf{思路:}选用接水时间短的人先接水。
+\\
+\textbf{证明：}假设有两个人a和b,a的接水时间小于b,如果a先接水,那么a的等待时间为0,b的等待时间为a的接水时间,如果b先接水,那么a的等待时间为b的接水时间,b的等待时间为0。所以应该选择等待时间最短的人先接水
+\end{frame}
+
+\begin{frame}
+\frametitle{例题:Luogu P1080}
+\textbf{题意:}国王邀请 n 位大臣玩游戏,需要重新安排顺序使最大奖赏尽可能少。  
+
+\end{frame}
+
+\begin{frame}
+\frametitle{例题:Luogu P1080}
+\textbf{思路:}按每个大臣左右手乘积除以右手的值排序,然后按照排序后的顺序计算每个大臣的奖赏。
+\\
+\textbf{证明:}假设有两个大臣a和b,a的左右手乘积除以右手的值小于b,如果a在b前面,那么a的奖赏为a的左右手乘积除以右手的值,b的奖赏为b的左右手乘积除以右手的值,如果b在a前面,那么a的奖赏为a的左右手乘积除以右手的值,b的奖赏为b的左右手乘积除以右手的值。所以应该按照左右手乘积除以右手的值排序
+\end{frame}
+
+\section{}
+\begin{frame}{}
+    \centering
+    \Huge The End
+\end{frame}
+
+\end{document}
