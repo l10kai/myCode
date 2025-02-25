@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{递推思想与动态规划}{2}{0}{1}
+\beamer@sectionintoc {2}{什么是dp?}{7}{0}{2}
+\beamer@sectionintoc {3}{动态规划基本概念}{8}{0}{3}
+\beamer@sectionintoc {4}{常见dp问题}{12}{0}{4}
+\beamer@sectionintoc {5}{线性dp基础}{23}{0}{5}
+\beamer@sectionintoc {6}{背包问题}{33}{0}{6}
