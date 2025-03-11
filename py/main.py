@@ -1,33 +1,34 @@
-from datetime import date, timedelta
+lim=450000
+isp=[True]*(lim+1);p=[];isp[1]=False
+for i in range(2,lim+1):
+    if isp[i]:
+        p.append(i)
+    x=0
+
+    while x<len(p) and i*p[x]<=lim:
+        isp[i*p[x]]=False
+        if i%p[x]==0:break
+        x+=1
+
+m,n = map(int,input().split())
+
+pp = []
+for x in p:
+    if (m <= x <= n) and x!=2 : pp.append(x)
+    if(x > n): break
 
 
-def is_prime(n):
-    if n < 2:
-        return False
-    if n % 2 == 0 and n != 2:
-        return False
-    r = int(n**0.5)
-    for i in range(3, r + 1, 2):
-        if n % i == 0:
-            return False
-    return True
+from itertools import combinations
+if m>2:print(0);exit()
+
+cc=0;
+for li in combinations(pp,2):
+    p=2
+    q,r=li
+    if isp[p*q+r] and isp[p*r+q] and isp[q*r+p]:
+        cc+=1
+
+print(cc)
 
 
-start = date(2005, 1, 1)
-end = date(2005, 12, 30)
-delta = timedelta(days=1)
-
-total_days = 0
-prime_days = 0
-
-current = start
-while current <= end:
-    date_int = int(current.strftime("%Y%m%d"))
-    total_days += 1
-    if is_prime(date_int):
-        prime_days += 1
-        print(current)
-    current += delta
-
-probability = prime_days / total_days
-print(f"近100年生日为质数的概率: {probability:.8f}")
+    

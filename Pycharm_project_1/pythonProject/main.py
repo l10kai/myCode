@@ -1,18 +1,24 @@
-# 这是一个示例 Python 脚本。
+def get_prime(lim):
+    isp=[True]*(lim+1);p=[];isp[1]=False
+    for i in range(2,lim+1):
+        if isp[i]:
+            p.append(i)
+        x=0
+        while x<len(p) and i*p[x]<=lim:
+            isp[i*p[x]]=False
+            if i%p[x]==0:break
+            x+=1
+    return p
 
-# 按 Ctrl+F5 执行或将其替换为您的代码。
-# 按 双击 Shift 在所有地方搜索类、文件、工具窗口、操作和设置。
+m,n = map(int,input().split())
+p = get_prime(1e6)
+pp = []
+for x in p:
+    if x >= m : pp.append(x)
+
+from itertools import combinations
 
 
-def print_hi(name):
-    # 在下面的代码行中使用断点来调试脚本。
-    print(f'Hi, {name}')  # 按 F9 切换断点。
 
 
-
-
-# 按装订区域中的绿色按钮以运行脚本。
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# 访问 https://www.jetbrains.com/help/pycharm/ 获取 PyCharm 帮助
+    
