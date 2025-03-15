@@ -1,40 +1,77 @@
 #include <bits/stdc++.h>
-
+#define int long long
 using namespace std;
 
-using i64 = int64_t;
-
-bool is_prime(i64 x) {
-    if (x < 2)
-        return 0;
-    for (int i = 2; i * i <= x; i++) {
-        if (x % i == 0)
-            return 0;
-    }
-    return 1;
-}
-
 signed main() {
-    int l, r;
-    cin >> l >> r;
-    vector<i64> primes;
-    for (int i = l; i <= r; i++) {
-        if (is_prime(i)) {
-            primes.push_back(i);
+    int n, m;
+    cin >> n >> m;
+
+    vector<vector<int> > g(n + 10, vector<int>(m + 10));
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= m; j++) {
+            cin >> g[i][j];
         }
     }
-    i64 ans = 0;
-    for (int i = 0; i < primes.size(); i++) {
-        for (int j = i + 1; j < primes.size(); j++) {
-            for (int k = j + 1; k < primes.size(); k++) {
-                if (is_prime(primes[i] * primes[j] + primes[k]) &&
-                    is_prime(primes[i] * primes[k] + primes[j]) &&
-                    is_prime(primes[j] * primes[k] + primes[i])) {
-                    ans++;
-                }
+
+    auto find1 = [&]() {
+        vector<vector<int> > res(n + 10, vector<int>(m + 10));
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                res[i][j] = max(res[i - 1][j], res[i][j - 1]) + g[i][j];
             }
         }
+
+        return res;
+    };
+
+    auto find2 = [&]() {
+        vector<vector<int> > res(n + 10, vector<int>(m + 10));
+
+        for (int i = n; i >= 1; i--) {
+            for (int j = m; j >= 1; j--) {
+                res[i][j] = max(res[i + 1][j], res[i][j + 1]) + g[i][j];
+            }
+        }
+
+        return res;
+    };
+
+    auto find3 = [&]() {
+        vector<vector<int> > res(n + 10, vector<int>(m + 10));
+
+        for (int i = n; i >= 1; i--) {
+            for (int j = 1; j <= m; j++) {
+                res[i][j] = max(res[i + 1][j], res[i][j - 1]) + g[i][j];
+            }
+        }
+
+        return res;
+    };
+
+    auto find4 = [&]() {
+        vector<vector<int> > res(n + 10, vector<int>(m + 10));
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = m; j >= 1; j--) {
+                res[i][j] = max(res[i - 1][j], res[i][j + 1]) + g[i][j];
+            }
+        }
+
+        return res;
+    };
+
+    auto dp1 = find1(), dp2 = find2(), dp3 = find3(), dp4 = find4();
+    int ans = -1;
+    for (int i = 2; i < n; i++) {
+        for (int j = 2; j < m; j++) {
+            ans = max(max(ans, dp1[i][j - 1] + dp2[i][j + 1] + dp3[i + 1][j] +
+                                   dp4[i - 1][j]),
+                      max(ans, dp1[i - 1][j] + dp2[i + 1][j] + dp3[i][j - 1] +
+                                   dp4[i][j + 1]));
+        }
     }
-    cout << ans << '\n';
+    cout << ans << endl;
     return 0;
 }
