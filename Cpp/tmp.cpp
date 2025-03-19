@@ -41,6 +41,6 @@ i64 A(i64 n, i64 m) {
 
 int main() {
     init();
-   cout <<C(5000, 2000);
+    cout << C(5000, 2000);
     return 0;
 }
