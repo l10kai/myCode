@@ -33,39 +33,57 @@ using u64 = uint64_t;
 
 const char &ln = '\n';
 
-void solve() {
+void solve() {}
+
+signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     int n, k;
     cin >> n >> k;
 
-    vector<vector<i64>> g(n);
-    vector<i64> deg(n);
+    vector<vector<i64>> g(n * k);
+    vector<i64> siz(n * k);
     for (int i = 0; i < n * k - 1; i++) {
         int u, v;
         cin >> u >> v;
         u--, v--;
         g[u].pb(v);
         g[v].pb(u);
-        deg[u]++;
-        deg[v]++;
     }
 
-    
+    function<void(int, int)> dfs = [&](int now, int from) {
+        siz[now] = 1;
+        i64 son_num = 0;
+        for (auto to : g[now]) {
+            if (to == from)
+                continue;
+            dfs(to, now);
+            if (siz[to]) {
+                son_num++;
+                siz[now] += siz[to];
+            }
+        }
 
+        if (siz[now] < k) {
+            if (now == 0 || son_num > 1) {
+                cout << "No" << ln;
+                exit(0);
+            }
+        } else if (siz[now] > k) {
+            cout << "No" << ln;
+            exit(0);
+        } else {
+            if (son_num > 2) {
+                cout << "No" << ln;
+                exit(0);
+            }
+            siz[now] = 0;
+        }
+    };
 
-
-
-}
-
-signed main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    int t = 1;
-    // cin >> t;
-
-    while (t--) {
-        solve();
-    }
+    dfs(0, -1);
+    cout << "Yes" << ln;
     // fin.close();
     // fout.close();
     return 0;

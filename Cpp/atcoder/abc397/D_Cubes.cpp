@@ -36,15 +36,27 @@ const char &ln = '\n';
 void solve() {
     i64 n;
     cin >> n;
-    map<i64, i64> mp;
-    
-    for (int i = 1; i <= 1e6; i++) {
-        mp[i * i * i] = 1;
 
-        if (mp[n - i * i * i] == 1) {
-            cout << i * i * i << " " << n - i * i * i << ln;
+    for (i64 i = 1; i <= 1e6; i++) {
+        i64 l = 1, r = 1e12;
+        while (l <= r) {
+            i64 y = (l + r) >> 1;
+
+            __int128 fx =
+                (__int128)(y + i) * (y + i) * (y + i) - (__int128)y * y * y;
+
+            if (fx == n) {
+                cout << y + i << " " << y << ln;
+                return;
+            } else if (fx < n) {
+                l = y + 1;
+            } else {
+                r = y - 1;
+            }
         }
     }
+
+    cout << -1 << ln;
 }
 
 signed main() {
