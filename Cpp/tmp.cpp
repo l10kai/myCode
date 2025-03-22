@@ -1,6 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
 using i64 = int64_t;
+inline __int128 read() {
+    __int128 x = 0, f = 1;
+    char ch = getchar();
+    while (ch < '0' || ch > '9') {
+        if (ch == '-')
+            f = -1;
+        ch = getchar();
+    }
+    while (ch >= '0' && ch <= '9') {
+        x = x * 10 + ch - '0';
+        ch = getchar();
+    }
+    return x * f;
+}
+
+inline void print(__int128 x) {
+    if (x < 0) {
+        putchar('-');
+        x = -x;
+    }
+    if (x > 9)
+        print(x / 10);
+    putchar(x % 10 + '0');
+}
 
 i64 mod = 1e9 + 7;
 
@@ -40,7 +64,10 @@ i64 A(i64 n, i64 m) {
 }  // a(n,m);
 
 int main() {
-    init();
-    cout << C(5000, 2000);
+    __int128 n = read(), m = read();
+
+    print(n);
+    cout << " ";
+    print(m);
     return 0;
 }
